@@ -4,6 +4,8 @@ import AddForm from './components/AddForm';
 import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
 import ServerError from './components/ServerError';
+import TodoDetails from './components/TodoDetails';
+import TodoEdit from './components/TodoEdit';
 import TodoList from "./components/TodoList"
 
 function App() {
@@ -15,7 +17,8 @@ function App() {
 
         <Route exact={true} path="/" component={TodoList} />
         <Route path="/add-form" component={AddForm} />
-
+        <Route path="/todo/:id/details" component={TodoDetails} />
+        <Route path="/todo/:id/edit" component={TodoEdit} />
 
 
         {/* component for server errors */}

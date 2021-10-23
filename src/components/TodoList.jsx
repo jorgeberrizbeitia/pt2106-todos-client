@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 class TodoList extends Component {
 
@@ -31,8 +32,8 @@ class TodoList extends Component {
 
         {!isLoading && listOfTodos.map((oneTodo) => {
           return (
-            <div>
-              <p>{oneTodo.title}</p>
+            <div key={oneTodo._id}>
+              <Link to={`/todo/${oneTodo._id}/details`}>{oneTodo.title}</Link>
             </div>
           )
         })}
