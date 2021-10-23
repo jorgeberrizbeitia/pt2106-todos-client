@@ -9,21 +9,27 @@ class TodoList extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5005/api/todos/all")
+    console.log(process.env.REACT_APP_SERVER_API)
+    axios.get(`${process.env.REACT_APP_SERVER_API}/todos/all`)
     .then( (response) => {
       this.setState({ listOfTodos: response.data, isLoading: false })
     })
-    .catch( (err) => console.log(err));
+    .catch( (err) => {
+      this.props.history.push("/500")
+    });
   }
 
   render() {
+
+    const { isLoading, listOfTodos } = this.state
+
     return (
       <div>
         <h2>List of Todos</h2>
 
-        {this.state.isLoading && <h1>...isLoading</h1>}
+        {isLoading && <h1>...isLoading</h1>}
 
-        {!this.state.isLoading && this.state.listOfTodos.map((oneTodo) => {
+        {!isLoading && listOfTodos.map((oneTodo) => {
           return (
             <div>
               <p>{oneTodo.title}</p>
