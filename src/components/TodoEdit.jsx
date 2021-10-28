@@ -29,9 +29,9 @@ class TodoEdit extends Component {
     axios.get(`${process.env.REACT_APP_SERVER_API}/todos/${this.props.match.params.id}`)
     .then( (response) => {
       this.setState({ 
-      title: response.data.title,
-      description: response.data.description,
-      doBefore: response.data.doBefore.slice(0, 10)
+        title: response.data.title,
+        description: response.data.description,
+        doBefore: response.data.doBefore.slice(0, 10)
     })})
     .catch( (err) => console.log(err));
   }
